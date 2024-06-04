@@ -7,7 +7,7 @@ function solveRect(l, w) {
         console.log(`Rectanlge dimensions must be greater than zero. Received: ${l}, ${w}`);
     } else {
         console.log(`Area of rectangle: ${rect.area(l, w)}`);
-        console.log(`Permiter of rectangle: ${rect.perimeter}`);
+        console.log(`Permiter of rectangle: ${rect.perimeter(l, w)}`);
     }
 }
 

@@ -1,0 +1,12 @@
+{
+  "name": "node-modules-code-chall",
+  "version": "0.0.1",
+  "description": "Code Challenge: Node Modules.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "12.9.0"
+  }
+}
