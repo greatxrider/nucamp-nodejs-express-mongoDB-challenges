@@ -1,6 +1,8 @@
 const http = require('http');
+
 const hostname = 'localhost';
 const port = 3000;
+
 const path = require('path');
 const fs = require('fs');
 

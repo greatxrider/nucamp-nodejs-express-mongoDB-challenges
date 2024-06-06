@@ -1,0 +1,13 @@
+{
+    "name": "cc_callbacks",
+    "version": "0.0.1",
+    "description": "Code Challenge: Callbacks",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "engines": {
+      "node": "14.9.0"
+    }
+  }
+  
