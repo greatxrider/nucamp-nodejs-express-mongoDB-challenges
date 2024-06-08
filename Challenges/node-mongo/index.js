@@ -56,7 +56,7 @@ MongoClient.connect(url, {}, (err, client) => {
                     // Print all retrieved documents.
                     console.log('Found Documents:', docs);
 
-                    // Close the MongoDB client connection.
+                    // Close the MongoDB client connection
                     client.close();
                 });
             },
