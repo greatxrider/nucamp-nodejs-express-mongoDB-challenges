@@ -1,2 +1,2 @@
 # nucamp-nodejs-express-mongoDB-challenges
-Collection of Nucamp's Back-end course in JavaScript Exercises, Projects and Challenges
+This is a collection of the exercises and challenges from the NodeJS, Express and MongoDB Back-end course.
