@@ -167,8 +167,10 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
     })
     .put(authenticate.verifyUser, (req, res, next) => {
         Campsite.findById(req.params.campsiteId)
+            .populate('comments.author')
             .then(campsite => {
-                if () {
+                const comment = campsite.comments.filter(comment => comment._id.equals(req.params.commentId));
+                if (comment[0].author.equals(req.user._id)) {
                     if (campsite && campsite.comments.id(req.params.commentId)) {
                         if (req.body.rating) {
                             campsite.comments.id(req.params.commentId).rating = req.body.rating;
@@ -180,7 +182,7 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
                             .then(campsite => {
                                 res.statusCode = 200;
                                 res.setHeader('Content-Type', 'application/json');
-                                res.json(campsite);
+                                res.json(campsite.comments.id(req.params.commentId));
                             })
                             .catch(err => next(err));
                     } else if (!campsite) {
@@ -193,7 +195,7 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
                         return next(err);
                     }
                 } else {
-                    err = new Error(`Comment ${req.params.commentId} not found`);
+                    err = new Error(`You cannot modify other persons comments.`);
                     err.status = 403;
                     return next(err);
                 }

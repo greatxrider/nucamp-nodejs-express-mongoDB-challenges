@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(passport.initialize());
 
 /* GET users listing. */
-router.get('/', authenticate.verifyUser, function (req, res, next) {
+router.get('/', authenticate.verifyUser, authenticate.verifyAdmin, function (req, res, next) {
   if (req.user.admin) {
     User.find()
       .then(users => {
@@ -17,10 +17,6 @@ router.get('/', authenticate.verifyUser, function (req, res, next) {
         res.json(users);
       })
       .catch(err => next(err));
-  } else {
-    err = new Error('You are not authorized to perform this operation!');
-    err.status = 404;
-    return next(err);
   }
 });
 
@@ -60,7 +56,7 @@ router.post('/signup', (req, res) => {
   );
 });
 
-router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
+router.post('/login', passport.authenticate('local', { session: false }), (req, res, err) => {
   const token = authenticate.getToken({ _id: req.user._id });
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
