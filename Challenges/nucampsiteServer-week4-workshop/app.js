@@ -11,7 +11,6 @@ const campsiteRouter = require('./routes/campsiteRouter');
 const promotionRouter = require('./routes/promotionsRouter');
 const partnerRouter = require('./routes/partnersRouter');
 const uploadRouter = require('./routes/uploadRouter');
-
 const mongoose = require('mongoose');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
